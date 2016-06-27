@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BankKata.Models.Withdraw>
+﻿@model IEnumerable<BankKata.Models.AccountBalance>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WithrawDate)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
@@ -23,15 +23,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.WithrawDate)
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Withdrawid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Withdrawid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Withdrawid })
+            @Html.ActionLink("Edit", "Edit", new { id=item.AccountBalanceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AccountBalanceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AccountBalanceId })
         </td>
     </tr>
 }

@@ -1,4 +1,4 @@
-﻿@model BankKata.Models.Withdraw
+﻿@model BankKata.Models.AccountBalance
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.WithrawDate)
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.WithrawDate)
+            @Html.DisplayFor(model => model.Date)
         </dd>
 
         <dt>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Withdrawid }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccountBalanceId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BankKata.Models.Deposit>
+﻿@model IEnumerable<BankKata.Models.AccountBalance>
 
 @{
     ViewBag.Title = "On Screen Balance";
@@ -15,7 +15,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DepositDateTime)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DepositDateTime)
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
@@ -39,9 +39,9 @@
             @Html.DisplayFor(modelItem => item.Balance)
         </td>
         @*<td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.DepositId}) |
-            @Html.ActionLink("Details", "Details", new {id = item.DepositId}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.DepositId})
+            @Html.ActionLink("Edit", "Edit", new {id = item.AccountBalanceId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.AccountBalanceId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.AccountBalanceId})
         </td>*@
     </tr>
 }

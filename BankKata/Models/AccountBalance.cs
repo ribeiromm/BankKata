@@ -1,15 +1,14 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace BankKata.Models
 {
-    public class Withdraw
+    public class AccountBalance
     {
-        public int Withdrawid { get; set; }
-
-        public DateTime WithrawDate { get; set; }
+        public int AccountBalanceId { get; set; }
 
         public decimal Amount { get; set; }
+        
+        public DateTime Date { get; set; }
 
         public decimal Balance { get; set; }
     }
