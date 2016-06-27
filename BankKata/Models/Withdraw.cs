@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace BankKata.Models
 {
@@ -8,6 +9,8 @@ namespace BankKata.Models
 
         public DateTime WithrawDate { get; set; }
 
-        public decimal WithrawAmount { get; set; }
+        public decimal Amount { get; set; }
+
+        public decimal Balance { get; set; }
     }
 }

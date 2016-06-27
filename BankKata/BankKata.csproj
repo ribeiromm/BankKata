@@ -171,6 +171,7 @@
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WithdrawsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +245,11 @@
     <Content Include="Views\Deposits\Details.cshtml" />
     <Content Include="Views\Deposits\Edit.cshtml" />
     <Content Include="Views\Deposits\Index.cshtml" />
+    <Content Include="Views\Withdraws\Create.cshtml" />
+    <Content Include="Views\Withdraws\Delete.cshtml" />
+    <Content Include="Views\Withdraws\Details.cshtml" />
+    <Content Include="Views\Withdraws\Edit.cshtml" />
+    <Content Include="Views\Withdraws\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
