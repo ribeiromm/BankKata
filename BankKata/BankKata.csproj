@@ -241,14 +241,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Deposits\Create.cshtml" />
-    <Content Include="Views\Deposits\Delete.cshtml" />
-    <Content Include="Views\Deposits\Details.cshtml" />
-    <Content Include="Views\Deposits\Edit.cshtml" />
     <Content Include="Views\Deposits\Index.cshtml" />
     <Content Include="Views\Withdraws\Create.cshtml" />
-    <Content Include="Views\Withdraws\Delete.cshtml" />
-    <Content Include="Views\Withdraws\Details.cshtml" />
-    <Content Include="Views\Withdraws\Edit.cshtml" />
     <Content Include="Views\Withdraws\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

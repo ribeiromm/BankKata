@@ -59,15 +59,11 @@ namespace BankKata.Controllers
                     sw.WriteLine(deposits);
                 }
 
-                //db.Deposits.Add(AccountBalance);
-                //db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
             return View(accountBalance);
         }
-
         
         protected override void Dispose(bool disposing)
         {
