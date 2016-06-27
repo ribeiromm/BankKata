@@ -10,28 +10,6 @@ namespace BankKata.Controllers
     {
         private BankKataContext db = new BankKataContext();
 
-        // GET: Deposits
-        public ActionResult Index()
-        {
-            var lines = new AccountBalance().GetAccountBalance();
-
-            var accountStatement = new List<AccountBalance>();
-
-            foreach (var line in lines)
-            {
-                var splitLines = line.Split('|');
-                accountStatement.Add(
-                    new AccountBalance
-                    {
-                        Date = Convert.ToDateTime(splitLines[0]),
-                        Amount = Convert.ToDecimal(splitLines[1]),
-                        Balance = Convert.ToDecimal(splitLines[2])
-                    });
-            }
-
-            return View(accountStatement);
-        }
-
         public ActionResult Create()
         {
             return View();
@@ -59,7 +37,7 @@ namespace BankKata.Controllers
                     sw.WriteLine(deposits);
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "AccountBalance");
             }
 
             return View(accountBalance);

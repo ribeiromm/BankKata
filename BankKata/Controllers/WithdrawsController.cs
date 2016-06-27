@@ -9,12 +9,6 @@ namespace BankKata.Controllers
     {
         private BankKataContext db = new BankKataContext();
 
-        // GET: Withdraws
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Create()
         {
             return View();
@@ -42,7 +36,7 @@ namespace BankKata.Controllers
                     sw.WriteLine(withdraws);
                 }
 
-                return RedirectToAction("Index", "Deposits");
+                return RedirectToAction("Index", "AccountBalance");
             }
 
             return View(accountBalance);

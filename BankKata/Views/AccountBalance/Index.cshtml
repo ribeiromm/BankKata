@@ -7,10 +7,18 @@
 <h2>On Screen Balance</h2>
 
 <p>
-    @Html.ActionLink("Create New Deposit", "Create")
+    @Html.ActionLink("Create New Deposit", "Create", "Deposits")
 </p>
 <p>
     @Html.ActionLink("Create New Withdraw", "Create", "Withdraws")
+</p>
+<p>
+    
+    <div class="form-group">
+  
+            <input type="submit" value="Print Statement" class="btn btn-default" onclick="location.href='@Url.Action("PrintStatement", "AccountBalance")'"/>
+     
+    </div>
 </p>
 
 <table class="table">
