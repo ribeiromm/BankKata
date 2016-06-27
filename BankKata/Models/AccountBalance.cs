@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BankKata.Models
 {
@@ -7,9 +8,15 @@ namespace BankKata.Models
         public int AccountBalanceId { get; set; }
 
         public decimal Amount { get; set; }
-        
+
         public DateTime Date { get; set; }
 
         public decimal Balance { get; set; }
+
+
+        public string[] GetAccountBalance()
+        {
+            return System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Where(x => x != "").ToArray();
+        }
     }
 }

@@ -13,14 +13,14 @@ namespace BankKata.Controllers
         // GET: Deposits
         public ActionResult Index()
         {
-            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Where(x => x != "");
+            var lines = new AccountBalance().GetAccountBalance();
 
-            var depositsList = new List<AccountBalance>();
+            var accountStatement = new List<AccountBalance>();
 
             foreach (var line in lines)
             {
                 var splitLines = line.Split('|');
-                depositsList.Add(
+                accountStatement.Add(
                     new AccountBalance
                     {
                         Date = Convert.ToDateTime(splitLines[0]),
@@ -29,7 +29,7 @@ namespace BankKata.Controllers
                     });
             }
 
-            return View(depositsList);
+            return View(accountStatement);
         }
 
         public ActionResult Create()
@@ -44,9 +44,9 @@ namespace BankKata.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AccountBalance accountBalance)
         {
-            accountBalance.Date = DateTime.Now;
+            accountBalance.Date = new Clock().Now();
 
-            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Last().Split('|');
+            var lines = accountBalance.GetAccountBalance().Last().Split('|');
 
             accountBalance.Balance = lines.Any() ? Convert.ToDecimal(lines[2]) + accountBalance.Amount : accountBalance.Amount;
             
@@ -68,6 +68,7 @@ namespace BankKata.Controllers
             return View(accountBalance);
         }
 
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

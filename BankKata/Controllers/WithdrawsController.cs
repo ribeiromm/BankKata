@@ -27,9 +27,9 @@ namespace BankKata.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AccountBalance accountBalance)
         {
-            accountBalance.Date = DateTime.Today;
+            accountBalance.Date = new Clock().Now();
 
-            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Last().Split('|');
+            var lines = accountBalance.GetAccountBalance().Last().Split('|');
 
             accountBalance.Balance = lines.Any() ? Convert.ToDecimal(lines[2]) - accountBalance.Amount : 0;
 
