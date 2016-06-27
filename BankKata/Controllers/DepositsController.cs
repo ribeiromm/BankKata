@@ -15,7 +15,7 @@ namespace BankKata.Controllers
         // GET: Deposits
         public ActionResult Index()
         {
-            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt");
+            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Where(x => x != "");
 
             var depositsList = new List<Deposit>();
 
@@ -26,7 +26,8 @@ namespace BankKata.Controllers
                     new Deposit
                     {
                         DepositDateTime = Convert.ToDateTime(splitLines[0]),
-                        Amount = Convert.ToDecimal(splitLines[1])
+                        Amount = Convert.ToDecimal(splitLines[1]),
+                        Balance = Convert.ToDecimal(splitLines[2])
                     });
             }
 
@@ -63,9 +64,13 @@ namespace BankKata.Controllers
         {
             deposit.DepositDateTime = DateTime.Now;
 
+            var lines = System.IO.File.ReadAllLines(@"C: \Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Last().Split('|');
+
+            deposit.Balance = lines.Any() ? Convert.ToDecimal(lines[2]) + deposit.Amount : deposit.Amount;
+            
             if (ModelState.IsValid)
             {
-                var deposits = string.Format("{0} | {1}", deposit.DepositDateTime, deposit.Amount);
+                var deposits = string.Format("{0} | {1} | {2}", deposit.DepositDateTime, deposit.Amount, deposit.Balance);
 
                 using (var sw = System.IO.File.AppendText(@"C:\Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt"))
                 {
@@ -101,7 +106,7 @@ namespace BankKata.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DepositId,Amount,DepositDateTime")] Deposit deposit)
+        public ActionResult Edit(Deposit deposit)
         {
             if (ModelState.IsValid)
             {

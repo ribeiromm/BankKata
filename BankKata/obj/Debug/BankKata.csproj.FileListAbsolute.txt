@@ -64,6 +64,6 @@ c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\bin\Micr
 c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\bin\Microsoft.Owin.Security.Google.xml
 c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\obj\Debug\BankKata.csprojResolveAssemblyReference.cache
 c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\obj\Debug\BankKata.dll
 c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\obj\Debug\BankKata.pdb
+c:\users\marior\documents\visual studio 2015\Projects\BankKata\BankKata\obj\Debug\BankKata.csprojResolveAssemblyReference.cache
