@@ -26,5 +26,10 @@ namespace BankKata.Models
                 sw.WriteLine(transaction);
             }
         }
+
+        public string BuildTransaction(object dataField, object amountField, object balanceField)
+        {
+            return string.Format("{0} | {1} | {2} ", dataField, amountField, balanceField);
+        }
     }
 }

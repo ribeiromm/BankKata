@@ -36,7 +36,7 @@ namespace BankKata.Controllers
         public void PrintStatement()
         {
             var statement = new StringBuilder();
-            statement.AppendLine(string.Format("{0} | {1} | {2}", "Date", "Amount", "Balance"));
+            statement.AppendLine(new AccountBalance().BuildTransaction("Date", "Amount", "Balance"));
 
             foreach(var line in Statement)
             {

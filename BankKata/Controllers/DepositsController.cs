@@ -29,7 +29,7 @@ namespace BankKata.Controllers
             
             if (ModelState.IsValid)
             {
-                var transaction = string.Format("{0} | {1} | {2}", accountBalance.Date, accountBalance.Amount, accountBalance.Balance);
+                var transaction = accountBalance.BuildTransaction(accountBalance.Date, accountBalance.Amount, accountBalance.Balance);
 
                 accountBalance.SaveTransaction(transaction);
 
