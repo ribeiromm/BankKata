@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BankKata.Models;
@@ -30,12 +29,9 @@ namespace BankKata.Controllers
             
             if (ModelState.IsValid)
             {
-                var deposits = string.Format("{0} | {1} | {2}", accountBalance.Date, accountBalance.Amount, accountBalance.Balance);
+                var transaction = string.Format("{0} | {1} | {2}", accountBalance.Date, accountBalance.Amount, accountBalance.Balance);
 
-                using (var sw = System.IO.File.AppendText(@"C:\Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt"))
-                {
-                    sw.WriteLine(deposits);
-                }
+                accountBalance.SaveTransaction(transaction);
 
                 return RedirectToAction("Index", "AccountBalance");
             }
