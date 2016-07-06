@@ -7,11 +7,7 @@ namespace BankKata.Controllers
     public class AccountBalanceController : Controller
     {
         private readonly StatementReader _statementReader = new StatementReader(new AccountTransactions());
-
-        public AccountBalanceController(IAccountTransactions accountTransactions)
-        {
-        }
-
+       
         // GET: AccountTransactions
         public ActionResult Index()
         {

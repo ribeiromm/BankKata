@@ -10,6 +10,7 @@ namespace BankKata
         protected void Application_Start()
         {
             RegisterControllerFactory();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

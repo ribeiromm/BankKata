@@ -5,7 +5,6 @@ namespace BankKata.Controllers
 {
     public class WithdrawsController : Controller
     {
-        private BankKataContext db = new BankKataContext();
         private readonly IAccountTransactions _accountTransactions;
 
         public WithdrawsController(IAccountTransactions accountTransactions)
@@ -39,15 +38,6 @@ namespace BankKata.Controllers
             }
 
             return View(account);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

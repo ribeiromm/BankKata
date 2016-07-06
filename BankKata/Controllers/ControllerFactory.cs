@@ -9,9 +9,12 @@ namespace BankKata.Controllers
     {
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            IController controller = Activator.CreateInstance(controllerType, new AccountTransactions()) as Controller;
+            if (controllerType.FullName == "BankKata.Controllers.AccountBalanceController")
+            {
+                return Activator.CreateInstance(controllerType, null) as Controller;
+            }
 
-            return controller;
+            return Activator.CreateInstance(controllerType, new AccountTransactions()) as Controller;
         } 
     }
 }
