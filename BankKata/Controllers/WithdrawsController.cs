@@ -24,7 +24,7 @@ namespace BankKata.Controllers
         {
             accountTransactions.Date = new Clock().Now();
 
-            accountTransactions.Balance = GetAccountBalance(accountTransactions);
+            accountTransactions.Balance = accountTransactions.GetAccountBalance(-accountTransactions.Amount);
 
             if (ModelState.IsValid)
             {
@@ -36,12 +36,6 @@ namespace BankKata.Controllers
             }
 
             return View(accountTransactions);
-        }
-
-        private static decimal GetAccountBalance(AccountTransactions accountTransactions)
-        {
-            var line = accountTransactions.GetAccountTransactions().First();
-            return line.Balance - accountTransactions.Amount;
         }
 
         protected override void Dispose(bool disposing)

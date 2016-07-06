@@ -9,7 +9,6 @@ namespace BankKata.Controllers
     public class DepositsController : Controller
     {
         private BankKataContext db = new BankKataContext();
-        private readonly StatementReader _statementReader = new StatementReader();
 
         public ActionResult Create()
         {
@@ -25,7 +24,7 @@ namespace BankKata.Controllers
         {
             accountTransactions.Date = new Clock().Now();
             
-            accountTransactions.Balance = GetAccountBalance(accountTransactions);
+            accountTransactions.Balance = accountTransactions.GetAccountBalance(accountTransactions.Amount);
             
             if (ModelState.IsValid)
             {
@@ -37,12 +36,6 @@ namespace BankKata.Controllers
             }
 
             return View(accountTransactions);
-        }
-
-        private static decimal GetAccountBalance(AccountTransactions accountTransactions)
-        {
-            var lines = accountTransactions.GetAccountTransactions().First();
-            return lines.Balance + accountTransactions.Amount;
         }
 
         protected override void Dispose(bool disposing)

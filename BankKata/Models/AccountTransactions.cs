@@ -23,6 +23,13 @@ namespace BankKata.Models
             return transactions.Select(ReadAccountBalance).OrderByDescending(x => x.Date);
         }
 
+        public decimal GetAccountBalance(decimal transactionAmount)
+        {
+            var balance = GetAccountTransactions().First();
+
+            return balance.Balance + transactionAmount;
+        }
+
         public void SaveTransaction(string transaction)
         {
             using (var sw = System.IO.File.AppendText(@"C:\Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt"))

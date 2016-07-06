@@ -12,9 +12,10 @@ namespace BankKata.Controllers
             return View(_statementReader.ReadAccountStatement());
         }
 
-        public void PrintStatement()
+        public ActionResult DisplayStatement()
         {
             MessageBox.Show(_statementReader.CreateStetment());
+            return RedirectToAction("Index");
         }
     }
 }
