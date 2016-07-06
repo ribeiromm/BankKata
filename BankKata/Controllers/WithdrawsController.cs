@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BankKata.Models;
 
 namespace BankKata.Controllers
@@ -8,7 +6,12 @@ namespace BankKata.Controllers
     public class WithdrawsController : Controller
     {
         private BankKataContext db = new BankKataContext();
-        private readonly StatementReader _statementReader = new StatementReader();
+        private readonly IAccountTransactions _accountTransactions;
+
+        public WithdrawsController(IAccountTransactions accountTransactions)
+        {
+            _accountTransactions = accountTransactions;
+        }
 
         public ActionResult Create()
         {
@@ -20,22 +23,22 @@ namespace BankKata.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AccountTransactions accountTransactions)
+        public ActionResult Create(Account account)
         {
-            accountTransactions.Date = new Clock().Now();
+            account.Date = new Clock().Now();
 
-            accountTransactions.Balance = accountTransactions.GetAccountBalance(-accountTransactions.Amount);
+            account.Balance = _accountTransactions.GetAccountBalance(-account.Amount);
 
             if (ModelState.IsValid)
             {
-                var transaction = string.Format("{0} | {1} | {2} ", accountTransactions.Date, -accountTransactions.Amount, accountTransactions.Balance);
+                var transaction = string.Format("{0} | {1} | {2} ", account.Date, -account.Amount, account.Balance);
 
-                accountTransactions.SaveTransaction(transaction);
+                _accountTransactions.SaveTransaction(transaction);
 
                 return RedirectToAction("Index", "AccountBalance");
             }
 
-            return View(accountTransactions);
+            return View(account);
         }
 
         protected override void Dispose(bool disposing)

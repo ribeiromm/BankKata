@@ -6,8 +6,14 @@ namespace BankKata.Controllers
 {
     public class StatementReader
     {
-        private readonly AccountTransactions _accountTransactions = new AccountTransactions();
-        public IEnumerable<AccountTransactions> ReadAccountStatement()
+        private readonly IAccountTransactions _accountTransactions;
+
+        public StatementReader(IAccountTransactions accountTransactions)
+        {
+            _accountTransactions = accountTransactions;
+        }
+
+        public IEnumerable<Account> ReadAccountStatement()
         {
             return _accountTransactions.GetAccountTransactions();
         }

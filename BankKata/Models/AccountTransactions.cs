@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace BankKata.Models
 {
-    public class AccountTransactions
+    public interface IAccountTransactions
     {
-        public int AccountBalanceId { get; set; }
+        IEnumerable<Account> GetAccountTransactions();
+        decimal GetAccountBalance(decimal transactionAmount);
+        void SaveTransaction(string transaction);
+    }
 
-        public decimal Amount { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Date { get; set; }
-
-        public decimal Balance { get; set; }
-
-        public IEnumerable<AccountTransactions> GetAccountTransactions()
+    public class AccountTransactions : IAccountTransactions
+    {
+        public IEnumerable<Account> GetAccountTransactions()
         {
             var transactions = System.IO.File.ReadAllLines(@"C:\Users\marior\Documents\visual studio 2015\Projects\BankKata\BankKata\Content\DepositSafe.txt").Where(x => x != "").ToArray();
 
@@ -38,10 +35,10 @@ namespace BankKata.Models
             }
         }
 
-        private static AccountTransactions ReadAccountBalance(string line)
+        private static Account ReadAccountBalance(string line)
         {
             var splitLines = line.Split('|');
-            return new AccountTransactions
+            return new Account
             {
                 Date = Convert.ToDateTime(splitLines[0]),
                 Amount = Convert.ToDecimal(splitLines[1]),
