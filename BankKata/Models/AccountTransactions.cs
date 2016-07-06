@@ -4,13 +4,6 @@ using System.Linq;
 
 namespace BankKata.Models
 {
-    public interface IAccountTransactions
-    {
-        IEnumerable<Account> GetAccountTransactions();
-        decimal GetAccountBalance(decimal transactionAmount);
-        void SaveTransaction(string transaction);
-    }
-
     public class AccountTransactions : IAccountTransactions
     {
         public IEnumerable<Account> GetAccountTransactions()

@@ -184,6 +184,7 @@
     <Compile Include="Models\BankKataContext.cs" />
     <Compile Include="Models\AccountTransactions.cs" />
     <Compile Include="Models\Clock.cs" />
+    <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

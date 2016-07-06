@@ -15,7 +15,7 @@ namespace BankKata.Controllers
 
         public IEnumerable<Account> ReadAccountStatement()
         {
-            return _accountTransactions.GetAccountTransactions();
+            return GetAccountTransactions();
         }
 
         public string CreateStetment()
@@ -24,12 +24,17 @@ namespace BankKata.Controllers
 
             statement.AppendLine(string.Format("{0} | {1} | {2} ", "Date", "Amount", "Balance"));
 
-            foreach (var line in _accountTransactions.GetAccountTransactions())
+            foreach (var line in GetAccountTransactions())
             {
                 statement.AppendLine(string.Format("{0} | {1} | {2} ", line.Date.ToShortDateString(), line.Amount, line.Balance));
             }
 
             return statement.ToString();
+        }
+
+        private IEnumerable<Account> GetAccountTransactions()
+        {
+            return _accountTransactions.GetAccountTransactions();
         }
     }
 }

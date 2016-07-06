@@ -16,7 +16,7 @@ namespace BankKata
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        private void RegisterControllerFactory()
+        private static void RegisterControllerFactory()
         {
             IControllerFactory controllerFactory = new ControllerFactory();
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
