@@ -173,13 +173,14 @@
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatementReader.cs" />
     <Compile Include="Controllers\WithdrawsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BankKataContext.cs" />
-    <Compile Include="Models\AccountBalance.cs" />
+    <Compile Include="Models\AccountTransactions.cs" />
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

@@ -15,8 +15,8 @@ namespace BankKata.Models
         {
         }
 
-        public DbSet<AccountBalance> Deposits { get; set; }
+        public DbSet<AccountTransactions> Deposits { get; set; }
 
-        public DbSet<AccountBalance> Withdraws { get; set; }
+        public DbSet<AccountTransactions> Withdraws { get; set; }
     }
 }

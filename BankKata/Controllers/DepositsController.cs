@@ -2,12 +2,14 @@
 using System.Linq;
 using System.Web.Mvc;
 using BankKata.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace BankKata.Controllers
 {
     public class DepositsController : Controller
     {
         private BankKataContext db = new BankKataContext();
+        private readonly StatementReader _statementReader = new StatementReader();
 
         public ActionResult Create()
         {
@@ -19,26 +21,30 @@ namespace BankKata.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AccountBalance accountBalance)
+        public ActionResult Create(AccountTransactions accountTransactions)
         {
-            accountBalance.Date = new Clock().Now();
-
-            var lines = accountBalance.GetAccountBalance().Last().Split('|');
-
-            accountBalance.Balance = lines.Any() ? Convert.ToDecimal(lines[2]) + accountBalance.Amount : accountBalance.Amount;
+            accountTransactions.Date = new Clock().Now();
+            
+            accountTransactions.Balance = GetAccountBalance(accountTransactions);
             
             if (ModelState.IsValid)
             {
-                var transaction = accountBalance.BuildTransaction(accountBalance.Date, accountBalance.Amount, accountBalance.Balance);
+                var transaction = string.Format("{0} | {1} | {2} ", accountTransactions.Date, accountTransactions.Amount, accountTransactions.Balance);
 
-                accountBalance.SaveTransaction(transaction);
+                accountTransactions.SaveTransaction(transaction);
 
                 return RedirectToAction("Index", "AccountBalance");
             }
 
-            return View(accountBalance);
+            return View(accountTransactions);
         }
-        
+
+        private static decimal GetAccountBalance(AccountTransactions accountTransactions)
+        {
+            var lines = accountTransactions.GetAccountTransactions().First();
+            return lines.Balance + accountTransactions.Amount;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

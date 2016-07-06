@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BankKata.Models.AccountBalance>
+﻿@model IEnumerable<BankKata.Models.AccountTransactions>
 
 @{
     ViewBag.Title = "On Screen Balance";
@@ -16,7 +16,7 @@
     
     <div class="form-group">
   
-            <input type="submit" value="Print Statement" class="btn btn-default" onclick="location.href='@Url.Action("PrintStatement", "AccountBalance")'"/>
+            <input type="submit" value="Print Statement" class="btn btn-default" onclick="location.href='@Url.Action("PrintStatement", "AccountTransactions")'"/>
      
     </div>
 </p>
@@ -48,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.Balance)
         </td>
         @*<td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.AccountBalanceId}) |
-            @Html.ActionLink("Details", "Details", new {id = item.AccountBalanceId}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.AccountBalanceId})
+            @Html.ActionLink("Edit", "Edit", new {id = item.AccountTransactionsId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.AccountTransactionsId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.AccountTransactionsId})
         </td>*@
     </tr>
 }
