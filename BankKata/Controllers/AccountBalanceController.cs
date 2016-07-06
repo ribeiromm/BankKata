@@ -15,8 +15,6 @@ namespace BankKata.Controllers
         public void PrintStatement()
         {
             MessageBox.Show(_statementReader.CreateStetment());
-
-            RedirectToAction("Index");
         }
     }
 }

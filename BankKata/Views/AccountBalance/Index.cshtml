@@ -13,11 +13,9 @@
     @Html.ActionLink("Create New Withdraw", "Create", "Withdraws")
 </p>
 <p>
-    
+
     <div class="form-group">
-  
-            <input type="submit" value="Print Statement" class="btn btn-default" onclick="location.href='@Url.Action("PrintStatement", "AccountTransactions")'"/>
-     
+        <input type="submit" value="Print Statement" class="btn btn-default" onclick="location.href = '@Url.Action("PrintStatement", "AccountBalance")'"/>
     </div>
 </p>
 
