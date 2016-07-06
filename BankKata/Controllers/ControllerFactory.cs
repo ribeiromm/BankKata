@@ -11,7 +11,7 @@ namespace BankKata.Controllers
         {
             if (controllerType.FullName == "BankKata.Controllers.AccountBalanceController")
             {
-                return Activator.CreateInstance(controllerType, null) as Controller;
+                return Activator.CreateInstance(controllerType, new StatementReader(new AccountTransactions())) as Controller;
             }
 
             return Activator.CreateInstance(controllerType, new AccountTransactions()) as Controller;

@@ -4,7 +4,7 @@ using BankKata.Models;
 
 namespace BankKata.Controllers
 {
-    public class StatementReader
+    public class StatementReader : IStatementReader
     {
         private readonly IAccountTransactions _accountTransactions;
 

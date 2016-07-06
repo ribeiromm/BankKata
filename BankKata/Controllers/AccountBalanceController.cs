@@ -1,12 +1,16 @@
 ﻿using System.Web.Mvc;
 using System.Windows.Forms;
-using BankKata.Models;
 
 namespace BankKata.Controllers
 {
     public class AccountBalanceController : Controller
     {
-        private readonly StatementReader _statementReader = new StatementReader(new AccountTransactions());
+        private readonly IStatementReader _statementReader;
+
+        public AccountBalanceController(IStatementReader statementReader)
+        {
+            _statementReader = statementReader;
+        }
        
         // GET: AccountTransactions
         public ActionResult Index()
