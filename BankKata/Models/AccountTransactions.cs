@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 namespace BankKata.Models
 {
     public class AccountTransactions : IAccountTransactions
     {
+        private static string SafeDespotiLocation => ConfigurationManager.AppSettings["SafeDepositLocation"];
+
         public IEnumerable<Account> GetAccountTransactions()
         {
-            var transactions = System.IO.File.ReadAllLines(@"C:/Git/BankKata/BankKata/Content/DepositSafe.txt").Where(x => x != "").ToArray();
+            var transactions = System.IO.File.ReadAllLines(SafeDespotiLocation).Where(x => x != "").ToArray();
 
             return transactions.Select(ReadAccountBalance).OrderByDescending(x => x.Date);
         }
@@ -28,7 +31,7 @@ namespace BankKata.Models
 
         public void SaveTransaction(string transaction)
         {
-            using (var sw = System.IO.File.AppendText(@"C:/Git/BankKata/BankKata/Content/DepositSafe.txt"))
+            using (var sw = System.IO.File.AppendText(SafeDespotiLocation))
             {
                 sw.WriteLine(transaction);
             }

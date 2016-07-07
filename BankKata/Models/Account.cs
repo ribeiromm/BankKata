@@ -14,6 +14,11 @@ namespace BankKata.Models
 
         public string ToStatementFormat()
         {
+            return $"{Date} | {Amount} | {Balance} ";
+        }
+
+        public string ToPrintStatementFormat()
+        {
             return $"{Date.ToShortDateString()} | {Amount} | {Balance} ";
         }
     }

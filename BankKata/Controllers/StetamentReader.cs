@@ -26,7 +26,7 @@ namespace BankKata.Controllers
 
             foreach (var account in GetAccountTransactions())
             {
-                statement.AppendLine(account.ToStatementFormat());
+                statement.AppendLine(account.ToPrintStatementFormat());
             }
 
             return statement.ToString();
