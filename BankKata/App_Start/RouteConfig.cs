@@ -12,7 +12,7 @@ namespace BankKata
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "AccountBalance", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "AccountTransactions", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
