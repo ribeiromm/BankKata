@@ -13,6 +13,7 @@ namespace BankKata.Controllers
         {
             _accountTransactions = accountTransactions;
         }
+
         public ActionResult Create()
         {
             return View();
@@ -31,7 +32,7 @@ namespace BankKata.Controllers
             
             if (ModelState.IsValid)
             {
-                var transaction = string.Format("{0} | {1} | {2}", account.Date, account.Amount, account.Balance);
+                var transaction = account.ToStatementFormat();
 
                 _accountTransactions.SaveTransaction(transaction);
 

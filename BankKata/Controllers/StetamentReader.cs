@@ -24,9 +24,9 @@ namespace BankKata.Controllers
 
             statement.AppendLine(string.Format("{0} | {1} | {2} ", "Date", "Amount", "Balance"));
 
-            foreach (var line in GetAccountTransactions())
+            foreach (var account in GetAccountTransactions())
             {
-                statement.AppendLine(string.Format("{0} | {1} | {2} ", line.Date.ToShortDateString(), line.Amount, line.Balance));
+                statement.AppendLine(account.ToStatementFormat());
             }
 
             return statement.ToString();
