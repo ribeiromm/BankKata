@@ -9,9 +9,9 @@ namespace BankKata.Controllers
     {
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            if (controllerType.FullName == "BankKata.Controllers.AccountBanalceController")
+            if (controllerType.FullName == "BankKata.Controllers.AccountBalanceController")
             {
-                
+                return Activator.CreateInstance(controllerType, new StatementReader(new AccountTransactions())) as Controller;
             }
 
             return Activator.CreateInstance(controllerType, new AccountTransactions()) as Controller;

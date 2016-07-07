@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace BankKata.Models
 {
@@ -10,7 +7,7 @@ namespace BankKata.Models
     {
         public decimal Amount { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
         public decimal Balance { get; set; }
