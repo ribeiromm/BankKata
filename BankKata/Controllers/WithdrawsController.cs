@@ -26,11 +26,11 @@ namespace BankKata.Controllers
         {
             account.Date = new Clock().Now();
 
-            account.Balance = _accountTransactions.GetAccountBalance(account.Amount);
+            account.Balance = _accountTransactions.GetAccountBalance(-account.Amount);
 
             if (ModelState.IsValid)
             {
-                var transaction =  string.Format("{0} | {1} | {2}",account.Date, -account.Amount, account.Balance);
+                var transaction =  account.ToStatementFormat();
 
                 _accountTransactions.SaveTransaction(transaction);
 

@@ -11,5 +11,10 @@ namespace BankKata.Models
         public DateTime Date { get; set; }
 
         public decimal Balance { get; set; }
+
+        public string ToStatementFormat()
+        {
+            return $"{Date.ToShortDateString()} | {Amount} | {Balance} ";
+        }
     }
 }

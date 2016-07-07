@@ -8,21 +8,27 @@ namespace BankKata.Models
     {
         public IEnumerable<Account> GetAccountTransactions()
         {
-            var transactions = System.IO.File.ReadAllLines(@"C:\Git\BankKata\BankKata\Content\DepositSafe.txt").Where(x => x != "").ToArray();
+            var transactions = System.IO.File.ReadAllLines(@"C:/Git/BankKata/BankKata/Content/DepositSafe.txt").Where(x => x != "").ToArray();
 
             return transactions.Select(ReadAccountBalance).OrderByDescending(x => x.Date);
         }
 
         public decimal GetAccountBalance(decimal transactionAmount)
         {
-            var balance = GetAccountTransactions().First();
+            var transactions = GetAccountTransactions();
 
-            return balance.Balance + transactionAmount;
+            decimal balance = 0;
+            if (transactions.Any())
+            {
+                balance = transactions.First().Balance;
+            }
+
+            return balance + transactionAmount;
         }
 
         public void SaveTransaction(string transaction)
         {
-            using (var sw = System.IO.File.AppendText(@"C:\Git\BankKata\BankKata\Content\Content\DepositSafe.txt"))
+            using (var sw = System.IO.File.AppendText(@"C:/Git/BankKata/BankKata/Content/DepositSafe.txt"))
             {
                 sw.WriteLine(transaction);
             }
