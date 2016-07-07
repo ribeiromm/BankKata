@@ -1,15 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BankKata.Controllers;
 
 namespace BankKata
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
-            RegisterControllerFactory();
+            RegisterControlleerFacory();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -17,7 +18,7 @@ namespace BankKata
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        private static void RegisterControllerFactory()
+        private void RegisterControlleerFacory()
         {
             IControllerFactory controllerFactory = new ControllerFactory();
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);

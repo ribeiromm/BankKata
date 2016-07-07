@@ -173,9 +173,10 @@
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Controllers\IStatementReader.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\StatementReader.cs" />
+    <Compile Include="Controllers\StetamentReader.cs" />
     <Compile Include="Controllers\WithdrawsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,7 +186,6 @@
     <Compile Include="Models\BankKataContext.cs" />
     <Compile Include="Models\AccountTransactions.cs" />
     <Compile Include="Models\Clock.cs" />
-    <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

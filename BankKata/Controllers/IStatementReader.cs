@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BankKata.Models;
 
 namespace BankKata.Controllers
@@ -7,6 +7,6 @@ namespace BankKata.Controllers
     {
         IEnumerable<Account> ReadAccountStatement();
 
-        string CreateStetment();
+        string CreateStatement();
     }
 }

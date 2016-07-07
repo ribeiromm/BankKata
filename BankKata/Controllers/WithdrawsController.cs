@@ -1,11 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using BankKata.Models;
 
 namespace BankKata.Controllers
 {
     public class WithdrawsController : Controller
     {
-        private readonly IAccountTransactions _accountTransactions;
+        private IAccountTransactions _accountTransactions;
 
         public WithdrawsController(IAccountTransactions accountTransactions)
         {
@@ -26,11 +28,11 @@ namespace BankKata.Controllers
         {
             account.Date = new Clock().Now();
 
-            account.Balance = _accountTransactions.GetAccountBalance(-account.Amount);
+            account.Balance = _accountTransactions.GetAccountBalance(account.Amount);
 
             if (ModelState.IsValid)
             {
-                var transaction = string.Format("{0} | {1} | {2} ", account.Date, -account.Amount, account.Balance);
+                var transaction =  string.Format("{0} | {1} | {2}",account.Date, -account.Amount, account.Balance);
 
                 _accountTransactions.SaveTransaction(transaction);
 

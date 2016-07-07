@@ -5,8 +5,6 @@ namespace BankKata.Models
 {
     public class Account
     {
-        public int AccountBalanceId { get; set; }
-
         public decimal Amount { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
