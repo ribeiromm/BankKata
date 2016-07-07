@@ -12,15 +12,15 @@ namespace BankKata.Controllers
 	        _statementReader = statementReader;
 
 	    }
-        public ActionResult Create()
+        public ActionResult Index()
         {
-            return View("Index");
+            return View(_statementReader.ReadAccountStatement());
         }
 
 	    public ActionResult DisplayStatement()
 	    {
 	        MessageBox.Show(_statementReader.CreateStatement());
-	        return RedirectToAction("Create");
+	        return RedirectToAction("Index");
 	    }
     }
 }
