@@ -110,3 +110,5 @@ C:\Git\BankKata\BankKata.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 C:\Git\BankKata\BankKata.Tests\obj\Debug\BankKata.Tests.csprojResolveAssemblyReference.cache
 C:\Git\BankKata\BankKata.Tests\obj\Debug\BankKata.Tests.dll
 C:\Git\BankKata\BankKata.Tests\obj\Debug\BankKata.Tests.pdb
+C:\Git\BankKata\BankKata.Tests\bin\Debug\nunit.framework.dll
+C:\Git\BankKata\BankKata.Tests\bin\Debug\nunit.framework.xml
