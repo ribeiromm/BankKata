@@ -17,8 +17,7 @@ namespace BankKata.Controllers
         {
             return GetAccountTransactions();
         }
-
-
+        
         public string CreateStatement()
         {
             var statement = new StringBuilder();
