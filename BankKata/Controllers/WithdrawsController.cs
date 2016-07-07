@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BankKata.Models;
 
 namespace BankKata.Controllers
 {
     public class WithdrawsController : Controller
     {
-        private IAccountTransactions _accountTransactions;
+        private readonly IAccountTransactions _accountTransactions;
 
         public WithdrawsController(IAccountTransactions accountTransactions)
         {
