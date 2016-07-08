@@ -3,11 +3,11 @@ using BankKata.Models;
 
 namespace BankKata.Controllers
 {
-    public class WithdrawsController : Controller
+    public class WithdrawController : Controller
     {
         private readonly IAccountTransactions _accountTransactions;
 
-        public WithdrawsController(IAccountTransactions accountTransactions)
+        public WithdrawController(IAccountTransactions accountTransactions)
         {
             _accountTransactions = accountTransactions;
         }

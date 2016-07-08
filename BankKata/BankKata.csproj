@@ -181,7 +181,7 @@
     <Compile Include="Models\IStatementReader.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Models\StetamentReader.cs" />
-    <Compile Include="Controllers\WithdrawsController.cs" />
+    <Compile Include="Controllers\WithdrawController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,7 +257,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Deposits\Create.cshtml" />
     <Content Include="Views\AccountBalance\Index.cshtml" />
-    <Content Include="Views\Withdraws\Create.cshtml" />
+    <Content Include="Views\Withdraw\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
