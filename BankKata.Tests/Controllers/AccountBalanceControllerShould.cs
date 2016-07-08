@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BankKata.Controllers;
 using BankKata.Models;
@@ -40,14 +44,24 @@ namespace BankKata.Tests.Controllers
         {
             var result = _controller.Index() as ViewResult;
 
+            var stetament = result.ViewData.Model as IEnumerable<Account>;
+
+            Assert.AreEqual(6, stetament.Count());
+            Assert.AreEqual(-10, stetament.Select(x => x.Amount).First());
+            Assert.AreEqual(45, stetament.Select(x => x.Balance).First());
+            Assert.AreEqual(10, stetament.Select(x => x.Amount).Last());
+            Assert.AreEqual(10, stetament.Select(x => x.Balance).Last());
+
             Assert.IsNotNull(result.Model);
         }
 
-        [Test]
-        public void Return_view_with_print_statement()
-        {
+        //[Test]
+        //public void Return_view_with_print_statement()
+        //{
+        //    var result = _controller.DisplayStatement() as ViewResult;
             
-        }
+        //    Assert.IsNull(result);
+        //}
 
         private void SetTransactions()
         {
