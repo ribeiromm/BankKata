@@ -89,7 +89,7 @@
     <Compile Include="Models\AccountTransactionShould.cs" />
     <Compile Include="Models\StetamentReaderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\AccountBalanceControllerShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">
