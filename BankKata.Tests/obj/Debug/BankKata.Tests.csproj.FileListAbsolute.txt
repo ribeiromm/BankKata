@@ -112,3 +112,7 @@ C:\Git\BankKata\BankKata.Tests\obj\Debug\BankKata.Tests.dll
 C:\Git\BankKata\BankKata.Tests\obj\Debug\BankKata.Tests.pdb
 C:\Git\BankKata\BankKata.Tests\bin\Debug\nunit.framework.dll
 C:\Git\BankKata\BankKata.Tests\bin\Debug\nunit.framework.xml
+C:\Git\BankKata\BankKata.Tests\bin\Debug\App.config
+C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.config
+C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Debug.config
+C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Release.config
