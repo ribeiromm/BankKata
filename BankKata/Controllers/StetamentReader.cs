@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BankKata.Models;
 
@@ -15,16 +16,16 @@ namespace BankKata.Controllers
 
         public IEnumerable<Account> ReadAccountStatement()
         {
-            return GetAccountTransactions();
+            return GetAccountTransactions().OrderByDescending(x => x.Date);
         }
         
         public string CreateStatement()
         {
             var statement = new StringBuilder();
 
-            statement.AppendLine(string.Format("{0} | {1} | {2} ", "Date", "Amount", "Balance"));
+            statement.AppendLine($"{"Date"} | {"Amount"} | {"Balance"} ");
 
-            foreach (var account in GetAccountTransactions())
+            foreach (var account in GetAccountTransactions().OrderByDescending(x => x.Date))
             {
                 statement.AppendLine(account.ToPrintStatementFormat());
             }
