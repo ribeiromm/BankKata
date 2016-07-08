@@ -174,9 +174,9 @@
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\IAccountTransactions.cs" />
-    <Compile Include="Controllers\IStatementReader.cs" />
+    <Compile Include="Models\IStatementReader.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\StetamentReader.cs" />
+    <Compile Include="Models\StetamentReader.cs" />
     <Compile Include="Controllers\WithdrawsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

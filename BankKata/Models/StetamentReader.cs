@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BankKata.Models;
+using BankKata.Controllers;
 
-namespace BankKata.Controllers
+namespace BankKata.Models
 {
     public class StatementReader : IStatementReader
     {
