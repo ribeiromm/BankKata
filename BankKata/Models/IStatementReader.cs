@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using BankKata.Models;
 
-namespace BankKata.Controllers
+namespace BankKata.Models
 {
     public interface IStatementReader
     {
