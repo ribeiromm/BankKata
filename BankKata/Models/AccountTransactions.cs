@@ -7,13 +7,13 @@ namespace BankKata.Models
 {
     public class AccountTransactions : IAccountTransactions
     {
-        private static string SafeDespotiLocation => ConfigurationManager.AppSettings["SafeDepositLocation"];
+        private static string SafeDepositLocation => ConfigurationManager.AppSettings["SafeDepositLocation"];
 
         public IEnumerable<Account> GetAccountTransactions()
         {
-            var transactions = System.IO.File.ReadAllLines(SafeDespotiLocation).Where(x => x != "").ToArray();
+            var transactions = System.IO.File.ReadAllLines(SafeDepositLocation).Where(x => x != "").ToArray();
 
-            return transactions.Select(ReadAccountBalance).OrderByDescending(x => x.Date);
+            return transactions.Select(ReadAccountBalance);
         }
 
         public decimal GetAccountBalance(decimal transactionAmount)
@@ -23,7 +23,7 @@ namespace BankKata.Models
             decimal balance = 0;
             if (transactions.Any())
             {
-                balance = transactions.First().Balance;
+                balance = transactions.Last().Balance;
             }
 
             return balance + transactionAmount;
@@ -31,7 +31,7 @@ namespace BankKata.Models
 
         public void SaveTransaction(string transaction)
         {
-            using (var sw = System.IO.File.AppendText(SafeDespotiLocation))
+            using (var sw = System.IO.File.AppendText(SafeDepositLocation))
             {
                 sw.WriteLine(transaction);
             }
