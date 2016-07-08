@@ -55,14 +55,6 @@ namespace BankKata.Tests.Controllers
             Assert.IsNotNull(result.Model);
         }
 
-        //[Test]
-        //public void Return_view_with_print_statement()
-        //{
-        //    var result = _controller.DisplayStatement() as ViewResult;
-            
-        //    Assert.IsNull(result);
-        //}
-
         private void SetTransactions()
         {
             var transactionBuilder = new StringBuilder();
