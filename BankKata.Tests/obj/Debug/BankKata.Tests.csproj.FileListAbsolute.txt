@@ -116,3 +116,4 @@ C:\Git\BankKata\BankKata.Tests\bin\Debug\App.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Debug.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Release.config
+C:\Git\BankKata\BankKata.Tests\bin\Debug\System.IO.Abstractions.dll

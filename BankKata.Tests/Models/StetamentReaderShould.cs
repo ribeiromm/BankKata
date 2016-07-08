@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using BankKata.Models;
@@ -13,17 +14,19 @@ namespace BankKata.Tests.Models
     {
         private StatementReader _statementReader;
         private static StringBuilder _transactionBuilder;
+        private FileSystem _fileSystem;
         private static string SafeDepositLocationDirectory => ConfigurationManager.AppSettings["SafeDepositLocationDirectory"];
         private static string SafeDepositLocationTest => ConfigurationManager.AppSettings["SafeDepositLocation"];
 
         [SetUp]
         public void Setup()
         {
+            _fileSystem = new FileSystem();
             if (!Directory.Exists(SafeDepositLocationDirectory))
                 Directory.CreateDirectory(SafeDepositLocationDirectory);
 
             SetTransactions();
-            _statementReader = new StatementReader(new AccountTransactions());
+            _statementReader = new StatementReader(new AccountTransactions(_fileSystem));
         }
 
         [TearDownAttribute]
@@ -53,7 +56,7 @@ namespace BankKata.Tests.Models
             Assert.That(stetatement, Is.EqualTo(stetamentResult));
         }
 
-        private static void SetTransactions()
+        private void SetTransactions()
         {
             _transactionBuilder = new StringBuilder();
 
@@ -64,7 +67,7 @@ namespace BankKata.Tests.Models
             _transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(5)} | {4} | {55} ");
             _transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(6)} | {-10} | {45} ");
 
-            using (var sw = File.AppendText(SafeDepositLocationTest))
+            using (var sw = _fileSystem.File.AppendText(SafeDepositLocationTest))
             {
                 sw.WriteLine(_transactionBuilder);
             }

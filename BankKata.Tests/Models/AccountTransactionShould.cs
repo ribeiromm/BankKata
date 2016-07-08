@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using BankKata.Models;
@@ -12,17 +13,19 @@ namespace BankKata.Tests.Models
     public class AccountTransactionShould
     {
         private AccountTransactions _accountTransactions;
+        private FileSystem _fileSystem;
         private static string SafeDepositLocationDirectory => ConfigurationManager.AppSettings["SafeDepositLocationDirectory"];
         private static string SafeDepositLocationTest => ConfigurationManager.AppSettings["SafeDepositLocation"];
 
         [SetUp]
         public void Setup()
         {
+            _fileSystem = new FileSystem();
             if (!Directory.Exists(SafeDepositLocationDirectory))
                 Directory.CreateDirectory(SafeDepositLocationDirectory);
 
             SetTransactions();
-            _accountTransactions = new AccountTransactions();
+            _accountTransactions = new AccountTransactions(_fileSystem);
         }
 
         [TearDown]
@@ -67,7 +70,7 @@ namespace BankKata.Tests.Models
 
         }
 
-        private static void SetTransactions()
+        private void SetTransactions()
         {
             var transactionBuilder = new StringBuilder();
 
@@ -78,7 +81,7 @@ namespace BankKata.Tests.Models
             transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(5)} | {4} | {55} ");
             transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(6)} | {-10} | {45} ");
             
-            using (var sw = File.AppendText(SafeDepositLocationTest))
+            using (var sw = _fileSystem.File.AppendText(SafeDepositLocationTest))
             {
                 sw.WriteLine(transactionBuilder);
             }

@@ -7,7 +7,7 @@ namespace BankKata.Controllers
 {
     public class DepositsController : Controller
     {
-        private IAccountTransactions _accountTransactions;
+        private readonly IAccountTransactions _accountTransactions;
 
         public DepositsController(IAccountTransactions accountTransactions)
         {

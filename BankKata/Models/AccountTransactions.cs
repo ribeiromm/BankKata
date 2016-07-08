@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO.Abstractions;
 using System.Linq;
 
 namespace BankKata.Models
 {
     public class AccountTransactions : IAccountTransactions
     {
+        private readonly IFileSystem _fileSystem;
         private static string SafeDepositLocation => ConfigurationManager.AppSettings["SafeDepositLocation"];
+
+        public AccountTransactions(IFileSystem fileSystem)
+        {
+            _fileSystem = fileSystem;
+        }
 
         public IEnumerable<Account> GetAccountTransactions()
         {
-            var transactions = System.IO.File.ReadAllLines(SafeDepositLocation).Where(x => x != "").ToArray();
+            var transactions = _fileSystem.File.ReadAllLines(SafeDepositLocation).Where(x => x != "").ToArray();
 
             return transactions.Select(ReadAccountBalance);
         }
@@ -31,7 +38,7 @@ namespace BankKata.Models
 
         public void SaveTransaction(string transaction)
         {
-            using (var sw = System.IO.File.AppendText(SafeDepositLocation))
+            using (var sw = _fileSystem.File.AppendText(SafeDepositLocation))
             {
                 sw.WriteLine(transaction);
             }

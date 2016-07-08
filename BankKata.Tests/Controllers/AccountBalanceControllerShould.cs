@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BankKata.Controllers;
 using BankKata.Models;
 using NUnit.Framework;
@@ -19,17 +17,19 @@ namespace BankKata.Tests.Controllers
     public class AccountBalanceControllerShould
     {
         private AccountBalanceController _controller;
+        private FileSystem _fileSystem;
         private static string SafeDepositLocationDirectory => ConfigurationManager.AppSettings["SafeDepositLocationDirectory"];
         private static string SafeDepositLocationTest => ConfigurationManager.AppSettings["SafeDepositLocation"];
 
         [SetUp]
         public void Setup()
         {
+            _fileSystem = new FileSystem();
             if (!Directory.Exists(SafeDepositLocationDirectory))
                 Directory.CreateDirectory(SafeDepositLocationDirectory);
 
             SetTransactions();
-            _controller = new AccountBalanceController(new StatementReader(new AccountTransactions()));
+            _controller = new AccountBalanceController(new StatementReader(new AccountTransactions(_fileSystem)));
         }
 
         [TearDown]
@@ -74,7 +74,7 @@ namespace BankKata.Tests.Controllers
             transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(5)} | {4} | {55} ");
             transactionBuilder.AppendLine($"{DateTime.Now.AddSeconds(6)} | {-10} | {45} ");
 
-            using (var sw = File.AppendText(SafeDepositLocationTest))
+            using (var sw = _fileSystem.File.AppendText(SafeDepositLocationTest))
             {
                 sw.WriteLine(transactionBuilder);
             }
