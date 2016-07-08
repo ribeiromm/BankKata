@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\WithdrawControllerShould.cs" />
     <Compile Include="Models\AccountTransactionShould.cs" />
     <Compile Include="Models\StetamentReaderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
