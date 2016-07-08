@@ -136,3 +136,6 @@ C:\Git\BankKata\BankKata\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Git\BankKata\BankKata\bin\Microsoft.Owin.Security.Google.xml
 C:\Git\BankKata\BankKata\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Git\BankKata\BankKata\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Git\BankKata\BankKata\bin\Web.config
+C:\Git\BankKata\BankKata\bin\Web.Debug.config
+C:\Git\BankKata\BankKata\bin\Web.Release.config

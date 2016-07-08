@@ -10,19 +10,19 @@ namespace BankKata.Tests.Models
     [TestFixture]
     public class AccountTransactionShould
     {
-        private string SafeDepositLocationTest => ConfigurationManager.AppSettings["SafeDepositLocationTest"];
+        private static string SafeDepositLocationTest => ConfigurationManager.AppSettings["SafeDespotiLocation"];
 
         [SetUp]
         public void Setup()
         {
-            var test = Directory.Exists(SafeDepositLocationTest);
             if (!Directory.Exists(SafeDepositLocationTest))
                 Directory.CreateDirectory(SafeDepositLocationTest);
 
             var transactionBuilder = new StringBuilder();
             transactionBuilder.Append($"{DateTime.Now} | {10} | {10} ");
 
-            using (var sw = File.AppendText(SafeDepositLocationTest))
+            var path = Path.Combine(SafeDepositLocationTest, "test.txt");
+            using (var sw = File.AppendText(path))
             {
                 sw.WriteLine(transactionBuilder);
             }
