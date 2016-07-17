@@ -140,3 +140,7 @@ C:\Git\BankKata\BankKata\bin\Web.config
 C:\Git\BankKata\BankKata\bin\Web.Debug.config
 C:\Git\BankKata\BankKata\bin\Web.Release.config
 C:\Git\BankKata\BankKata\bin\System.IO.Abstractions.dll
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Web.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Web.Debug.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Web.Release.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\System.IO.Abstractions.dll

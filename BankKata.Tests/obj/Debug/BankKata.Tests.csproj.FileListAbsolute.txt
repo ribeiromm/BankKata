@@ -117,3 +117,10 @@ C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Debug.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\Web.Release.config
 C:\Git\BankKata\BankKata.Tests\bin\Debug\System.IO.Abstractions.dll
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\Web.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\Web.Debug.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\Web.Release.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\App.config
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\nunit.framework.dll
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\System.IO.Abstractions.dll
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\nunit.framework.xml
