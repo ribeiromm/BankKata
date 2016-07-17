@@ -124,3 +124,4 @@ C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bi
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\nunit.framework.dll
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\System.IO.Abstractions.dll
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\nunit.framework.xml
+C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata.Tests\bin\Debug\Content\DepositSafe.txt
