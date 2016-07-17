@@ -6,7 +6,7 @@ namespace BankKata.Controllers
     public class WithdrawController : Controller
     {
         private readonly IAccountTransactions _accountTransactions;
-
+        
         public WithdrawController(IAccountTransactions accountTransactions)
         {
             _accountTransactions = accountTransactions;
@@ -33,6 +33,8 @@ namespace BankKata.Controllers
                 var transaction =  account.ToStatementFormat();
 
                 _accountTransactions.SaveTransaction(transaction);
+
+                
 
                 return RedirectToAction("Index", "AccountBalance");
             }

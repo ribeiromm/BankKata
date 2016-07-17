@@ -180,6 +180,7 @@
     <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IStatementReader.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\NotificationStrategy.cs" />
     <Compile Include="Models\StetamentReader.cs" />
     <Compile Include="Controllers\WithdrawController.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,6 +193,7 @@
     <Compile Include="Models\Clock.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TrasationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
