@@ -34,7 +34,9 @@ namespace BankKata.Controllers
 
                 _accountTransactions.SaveTransaction(transaction);
 
-                
+                var notification = new Notification();
+                notification.Set(account);
+                notification.SetNotification(new WithDrawNotification());
 
                 return RedirectToAction("Index", "AccountBalance");
             }

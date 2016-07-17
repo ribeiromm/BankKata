@@ -50,16 +50,22 @@ namespace BankKata.Models
 
     public class Notification
     {
-        private readonly NotificationStrategy _notificationStrategy;
+        private NotificationStrategy _notificationStrategy;
+        private Account _account;
 
-        public Notification(NotificationStrategy notificationStrategy)
+        public void SetNotification(NotificationStrategy notificationStrategy)
         {
             _notificationStrategy = notificationStrategy;
         }
 
-        public void SendMessage(Account account)
+        public void Set(Account account)
         {
-            _notificationStrategy.SendNotification(account);
+            _account = account;
+        }
+
+        public void SendMessage()
+        {
+            _notificationStrategy.SendNotification(_account);
         }
     }
 }
