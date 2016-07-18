@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Ajax.Utilities;
 
 namespace BankKata.Models
 {
@@ -6,12 +7,11 @@ namespace BankKata.Models
     {
         protected Message _message;
 
-        protected Message Message
+        public Message Message
         {
             get { return _message;}
         }
 
-        public abstract void NotificationType();
         public abstract void BodyMessage();
         public abstract void MessageDetails();
     }
@@ -20,12 +20,11 @@ namespace BankKata.Models
     {
         public LetterBuilder()
         {
-            _message = new Message();
-        }
-        
-        public override void NotificationType()
-        {
-            _message.NotificationType = Models.NotificationType.Letter;
+            _message = new Message
+            {
+                NotificationType = NotificationType.Letter,
+                MessageDetails = new Dictionary<string, string>()
+            };
         }
 
         public override void BodyMessage()
@@ -46,22 +45,22 @@ namespace BankKata.Models
     {
         public EmailBuilder()
         {
-            _message = new Message();
-        }
-        public override void NotificationType()
-        {
-            _message.NotificationType = Models.NotificationType.Email;
+            _message = new Message
+            {
+                NotificationType = NotificationType.Email,
+                MessageDetails = new Dictionary<string, string>()
+            };
         }
 
         public override void BodyMessage()
         {
-            _message.Body = "";
+            _message.Body = "Your balance is now {0} after the latest transaction {1}";
         }
 
         public override void MessageDetails()
         {
-            _message.MessageDetails["sbject"] = "";
-            _message.MessageDetails["emailAddress"] = "";
+            _message.MessageDetails["subject"] = "You new balance";
+            _message.MessageDetails["emailAddress"] = "something@something.com";
         }
     }
 
@@ -69,16 +68,16 @@ namespace BankKata.Models
     {
         public SmsBuilder()
         {
-            _message = new Message();
-        }
-        public override void NotificationType()
-        {
-            _message.NotificationType = Models.NotificationType.Sms;
+            _message = new Message
+            {
+                NotificationType = NotificationType.Sms,
+                MessageDetails = new Dictionary<string, string>()
+            };
         }
 
         public override void BodyMessage()
         {
-            _message.Body = "";
+            _message.Body = $"Your balance is now {0} after the latest transaction {1}";
         }
 
         public override void MessageDetails()
@@ -89,9 +88,9 @@ namespace BankKata.Models
 
     public class Message
     {
-        public NotificationType NotificationType { get; set; }
         public string Body { get; set; }
-        public Dictionary<string, string> MessageDetails { get; set; } 
+        public Dictionary<string, string> MessageDetails { get; set; }
+        public NotificationType NotificationType { get; set; }
     }
 
     public enum NotificationType
