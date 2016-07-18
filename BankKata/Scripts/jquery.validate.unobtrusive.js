@@ -199,7 +199,7 @@
                     message = $element.attr(prefix),
                     paramValues = {};
 
-                if (message !== undefined) {  // Compare against undefined, because an empty message is legal (and falsy)
+                if (message !== undefined) {  // Compare against undefined, because an empty Message is legal (and falsy)
                     prefix += "-";
 
                     $.each(this.params, function () {
