@@ -29,7 +29,7 @@ namespace BankKata.Tests.Controllers
                 Directory.CreateDirectory(SafeDepositLocationDirectory);
 
             SetTransactions();
-            _controller = new WithdrawController(new AccountTransactions(_fileSystem));
+            _controller = new WithdrawController(new AccountTransactions(_fileSystem), new SendMessage());
         }
 
         [TearDown]

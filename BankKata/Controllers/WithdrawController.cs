@@ -6,10 +6,12 @@ namespace BankKata.Controllers
     public class WithdrawController : Controller
     {
         private readonly IAccountTransactions _accountTransactions;
-        
-        public WithdrawController(IAccountTransactions accountTransactions)
+        private ISendMessage _sendMessage;
+
+        public WithdrawController(IAccountTransactions accountTransactions, ISendMessage sendMessage)
         {
             _accountTransactions = accountTransactions;
+            _sendMessage = sendMessage;
         }
 
         public ActionResult Create()
@@ -34,10 +36,7 @@ namespace BankKata.Controllers
 
                 _accountTransactions.SaveTransaction(transaction);
 
-                var notification = new Notification();
-                notification.Set(account);
-                notification.SetNotification(new WithDrawNotification());
-                notification.SendMessage();
+                _sendMessage.Send(account);
 
                 return RedirectToAction("Index", "AccountBalance");
             }

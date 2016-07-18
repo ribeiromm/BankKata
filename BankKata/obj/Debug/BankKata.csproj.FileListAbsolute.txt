@@ -145,3 +145,4 @@ C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Web.
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Web.Release.config
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\System.IO.Abstractions.dll
 C:\Users\marior\Documents\Visual Studio 2015\Projects\BankKata\BankKata\bin\Content\DepositSafe.txt
+C:\Git\BankKata\BankKata\bin\Content\DepositSafe.txt
