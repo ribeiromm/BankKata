@@ -29,15 +29,15 @@ namespace BankKata.Models
 
         public override void BodyMessage()
         {
-            _message.Body = "";
+            _message.Body = "Dear {0} the balance in your account is {1} after the latest transaction {2}";
         }
 
         public override void MessageDetails()
         {
-            _message.MessageDetails["clientName"] = "";
-            _message.MessageDetails["clientAddressLine1"] = "";
-            _message.MessageDetails["clientAddressLine2"] = "";
-            _message.MessageDetails["clientPostCode"] = "";
+            _message.MessageDetails["clientName"] = "Sir Bla Blau";
+            _message.MessageDetails["clientAddressLine1"] = "The Number";
+            _message.MessageDetails["clientAddressLine2"] = "At street";
+            _message.MessageDetails["clientPostCode"] = "STH12 12STH";
         }
     }
 
@@ -77,12 +77,12 @@ namespace BankKata.Models
 
         public override void BodyMessage()
         {
-            _message.Body = $"Your balance is now {0} after the latest transaction {1}";
+            _message.Body = "Balance {0}, latest transaction {1}";
         }
 
         public override void MessageDetails()
         {
-            _message.MessageDetails["mobileNumber"] = "";
+            _message.MessageDetails["mobileNumber"] = "0123456";
         }
     }
 
