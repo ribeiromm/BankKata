@@ -15,6 +15,11 @@ namespace BankKata.Controllers
                 return Activator.CreateInstance(controllerType, new StatementReader(new AccountTransactions(new FileSystem()))) as Controller;
             }
 
+            if (controllerType.FullName == typeof (WithdrawController).FullName)
+            {
+                return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem()), new SendMessage()) as Controller;
+            }
+
             return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem())) as Controller;
         }
     }
