@@ -2,7 +2,6 @@
 
 namespace BankKata.Models
 {
-
     public abstract class NotificationStrategy
     {
         public abstract void SendNotification(Account account);
@@ -26,7 +25,13 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            MessageBox.Show($"SMS sent: Amount in: {account.Amount}  - New Balance: {account.Balance}");
+            var messageDetails = new MessageDetails();
+            var notifycationBuilder = new SmsBuilder();
+            messageDetails.Construct(notifycationBuilder);
+
+            var messages = string.Format(notifycationBuilder.Message.Body, account.Balance, account.TrasationType);
+
+            MessageBox.Show($"Mobile number: { notifycationBuilder.Message.MessageDetails["mobileNumber"] } sms: {messages}");
         }
     }
 
@@ -34,7 +39,13 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-           MessageBox.Show($"Letter sent : Latest transaction { account.TrasationType } with amount of: {account.Amount} and your new balance is {account.Balance}");
+            var messageDetails = new MessageDetails();
+            var notifycationBuilder = new LetterBuilder();
+            messageDetails.Construct(notifycationBuilder);
+
+            var messages = string.Format(notifycationBuilder.Message.Body, notifycationBuilder.Message.MessageDetails["clientName"], account.Balance, account.TrasationType);
+            MessageBox.Show($"Letter sent : AddressLine1 { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } addressline2: { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } " +
+                            $"postcode: {notifycationBuilder.Message.MessageDetails["clientPostCode"] } and leeter content: { messages }");
         }
     }
 
