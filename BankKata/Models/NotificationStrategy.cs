@@ -44,8 +44,8 @@ namespace BankKata.Models
             messageDetails.Construct(notifycationBuilder);
 
             var messages = string.Format(notifycationBuilder.Message.Body, notifycationBuilder.Message.MessageDetails["clientName"], account.Balance, account.TrasationType);
-            MessageBox.Show($"Letter sent : AddressLine1 { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } addressline2: { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } " +
-                            $"postcode: {notifycationBuilder.Message.MessageDetails["clientPostCode"] } and leeter content: { messages }");
+            MessageBox.Show($"Letter sent : AddressLine1 { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } addressline2: { notifycationBuilder.Message.MessageDetails["clientAddressLine2"] } " +
+                            $"postcode: {notifycationBuilder.Message.MessageDetails["clientPostCode"] } and letter content: { messages }");
         }
     }
 
