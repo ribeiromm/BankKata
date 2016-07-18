@@ -12,7 +12,13 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            MessageBox.Show($"Email sent: Amount in: {account.Amount}  - New Balance: {account.Balance}");
+            var messageDetails = new MessageDetails();
+            var notifycationBuilder = new EmailBuilder();
+            messageDetails.Construct(notifycationBuilder);
+
+            var messages = string.Format(notifycationBuilder.Message.Body, account.Balance, account.TrasationType);
+            
+            MessageBox.Show($"Subject: {notifycationBuilder.Message.MessageDetails["subject"]} to be sent to this email: {notifycationBuilder.Message.MessageDetails["emailAddress"]} and this is the body: {messages}");
         }
     }
 
@@ -28,7 +34,7 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            MessageBox.Show($"Letter sent : Latest transaction { account.TrasationType } with amount of: {account.Amount} and your new balance is {account.Balance}");
+           MessageBox.Show($"Letter sent : Latest transaction { account.TrasationType } with amount of: {account.Amount} and your new balance is {account.Balance}");
         }
     }
 
@@ -50,6 +56,15 @@ namespace BankKata.Models
         public void SendMessage()
         {
             _notificationStrategy.SendNotification(_account);
+        }
+    }
+
+    public class MessageDetails
+    {
+        public void Construct(NotificationBuilder notificationBuilder)
+        {
+            notificationBuilder.MessageDetails();
+            notificationBuilder.BodyMessage();
         }
     }
 }
