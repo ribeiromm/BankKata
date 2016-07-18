@@ -12,6 +12,8 @@ namespace BankKata.Models
 
         public decimal Balance { get; set; }
 
+        public TrasationType TrasationType { get; set; }
+
         public string ToStatementFormat()
         {
             return $"{Date} | {Amount} | {Balance} ";
