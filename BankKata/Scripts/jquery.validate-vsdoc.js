@@ -634,7 +634,7 @@ $.extend($.validator, {
 			return true;
 		},
 		
-		// return the custom message for the given element and validation method
+		// return the custom Message for the given element and validation method
 		// specified in the element's "messages" metadata
 		customMetaMessage: function(element, method) {
 			if (!$.metadata)
@@ -647,7 +647,7 @@ $.extend($.validator, {
 			return meta && meta.messages && meta.messages[method];
 		},
 		
-		// return the custom message for the given element name and validation method
+		// return the custom Message for the given element name and validation method
 		customMessage: function( name, method ) {
 			var m = this.settings.messages[name];
 			return m && (m.constructor == String
@@ -671,7 +671,7 @@ $.extend($.validator, {
 				// title is never undefined, so handle empty string as undefined
 				!this.settings.ignoreTitle && element.title || undefined,
 				$.validator.messages[method],
-				"<strong>Warning: No message defined for " + element.name + "</strong>"
+				"<strong>Warning: No Message defined for " + element.name + "</strong>"
 			);
 		},
 		
@@ -738,7 +738,7 @@ $.extend($.validator, {
 				// refresh error/success class
 				label.removeClass().addClass( this.settings.errorClass );
 			
-				// check if we have a generated label, replace the message then
+				// check if we have a generated label, replace the Message then
 				label.attr("generated") && label.html(message);
 			} else {
 				// create label
@@ -1012,7 +1012,7 @@ $.extend($.validator, {
 	addMethod: function(name, method, message) {
 		/// <summary>
 		/// Add a custom validation method. It must consist of a name (must be a legal javascript 
-		/// identifier), a javascript based function and a default string message.
+		/// identifier), a javascript based function and a default string Message.
 		/// </summary>
 		/// <param name="name" type="String">
 		/// The name of the method, used to identify and referencing it, must be a valid javascript
@@ -1021,9 +1021,9 @@ $.extend($.validator, {
 		/// <param name="method" type="Function">
 		/// The actual method implementation, returning true if an element is valid
 		/// </param>
-		/// <param name="message" type="String" optional="true">
-		/// (Optional) The default message to display for this method. Can be a function created by 
-		/// jQuery.validator.format(value). When undefined, an already existing message is used 
+		/// <param name="Message" type="String" optional="true">
+		/// (Optional) The default Message to display for this method. Can be a function created by 
+		/// jQuery.validator.format(value). When undefined, an already existing Message is used 
 		/// (handy for localization), otherwise the field-specific messages have to be defined.
 		/// </param>
 

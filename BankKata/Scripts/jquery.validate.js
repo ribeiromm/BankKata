@@ -595,13 +595,13 @@ $.extend($.validator, {
 			return true;
 		},
 
-		// return the custom message for the given element and validation method
+		// return the custom Message for the given element and validation method
 		// specified in the element's HTML5 data attribute
 		customDataMessage: function( element, method ) {
 			return $(element).data("msg-" + method.toLowerCase()) || (element.attributes && $(element).attr("data-msg-" + method.toLowerCase()));
 		},
 
-		// return the custom message for the given element name and validation method
+		// return the custom Message for the given element name and validation method
 		customMessage: function( name, method ) {
 			var m = this.settings.messages[name];
 			return m && (m.constructor === String ? m : m[method]);
@@ -624,7 +624,7 @@ $.extend($.validator, {
 				// title is never undefined, so handle empty string as undefined
 				!this.settings.ignoreTitle && element.title || undefined,
 				$.validator.messages[method],
-				"<strong>Warning: No message defined for " + element.name + "</strong>"
+				"<strong>Warning: No Message defined for " + element.name + "</strong>"
 			);
 		},
 
@@ -694,7 +694,7 @@ $.extend($.validator, {
 			if ( label.length ) {
 				// refresh error/success class
 				label.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
-				// replace message on existing label
+				// replace Message on existing label
 				label.html(message);
 			} else {
 				// create label
