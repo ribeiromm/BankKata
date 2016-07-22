@@ -17,7 +17,7 @@ namespace BankKata.Models
             _notification.SendMessage();
         }
 
-        //todo this cn become a static factory
+        //todo: this shoulb be a static factory
         private NotificationStrategy FinNotification(Account account)
         {
             if (account.Balance > 70 && account.Balance <= 80)
