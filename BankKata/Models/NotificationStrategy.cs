@@ -11,13 +11,7 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            var messageDetails = new MessageDetails();
-            var notifycationBuilder = new EmailBuilder();
-            messageDetails.Construct(notifycationBuilder);
-
-            var messages = string.Format(notifycationBuilder.Message.Body, account.Balance, account.TrasationType);
-            
-            MessageBox.Show($"Subject: {notifycationBuilder.Message.MessageDetails["subject"]} to be sent to this email: {notifycationBuilder.Message.MessageDetails["emailAddress"]} and this is the body: {messages}");
+            MessageBox.Show("Email sent to customer");
         }
     }
 
@@ -25,13 +19,7 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            var messageDetails = new MessageDetails();
-            var notifycationBuilder = new SmsBuilder();
-            messageDetails.Construct(notifycationBuilder);
-
-            var messages = string.Format(notifycationBuilder.Message.Body, account.Balance, account.TrasationType);
-
-            MessageBox.Show($"Mobile number: { notifycationBuilder.Message.MessageDetails["mobileNumber"] } sms: {messages}");
+            MessageBox.Show("SMS sent to customer");
         }
     }
 
@@ -39,43 +27,24 @@ namespace BankKata.Models
     {
         public override void SendNotification(Account account)
         {
-            var messageDetails = new MessageDetails();
-            var notifycationBuilder = new LetterBuilder();
-            messageDetails.Construct(notifycationBuilder);
-
-            var messages = string.Format(notifycationBuilder.Message.Body, notifycationBuilder.Message.MessageDetails["clientName"], account.Balance, account.TrasationType);
-            MessageBox.Show($"Letter sent : AddressLine1 { notifycationBuilder.Message.MessageDetails["clientAddressLine1"] } addressline2: { notifycationBuilder.Message.MessageDetails["clientAddressLine2"] } " +
-                            $"postcode: {notifycationBuilder.Message.MessageDetails["clientPostCode"] } and letter content: { messages }");
+            MessageBox.Show("Letter sent to customer");
         }
     }
 
     public class Notification
     {
-        private NotificationStrategy _notificationStrategy;
-        private Account _account;
+        private readonly NotificationStrategy _notificationStrategy;
+        private readonly Account _account;
 
-        public void SetNotification(NotificationStrategy notificationStrategy)
-        {
-            _notificationStrategy = notificationStrategy;
-        }
-
-        public void Set(Account account)
+        public Notification(Account account, NotificationStrategy notificationStrategy)
         {
             _account = account;
+            _notificationStrategy = notificationStrategy;
         }
 
         public void SendMessage()
         {
             _notificationStrategy.SendNotification(_account);
-        }
-    }
-
-    public class MessageDetails
-    {
-        public void Construct(NotificationBuilder notificationBuilder)
-        {
-            notificationBuilder.MessageDetails();
-            notificationBuilder.BodyMessage();
         }
     }
 }
