@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Web.Script.Serialization;
 
 namespace BankKata.Investiment
@@ -23,32 +22,31 @@ namespace BankKata.Investiment
         }
     }
 
-    internal class Share
+    public class Share
     {
         public string Company { get; set; }
         public int Price { get; set; }
     }
 
-    public abstract class Stock
+    public abstract class StockMarket
     {
-        private readonly string _company;
         private int _price;
-        private readonly List<IInvestor> _investors = new List<IInvestor>();
+        private readonly List<IPotencialInvestor> _investors = new List<IPotencialInvestor>();
 
-        protected Stock(string company, int price)
+        protected StockMarket(string company, int price)
         {
-            _company = company;
+            Company = company;
             _price = price;
         }
 
-        public void Attach(IInvestor investor)
+        public void Attach(IPotencialInvestor potencialInvestor)
         {
-            _investors.Add(investor);
+            _investors.Add(potencialInvestor);
         }
 
-        public void Dettach(IInvestor investor)
+        public void Dettach(IPotencialInvestor potencialInvestor)
         {
-            _investors.Remove(investor);
+            _investors.Remove(potencialInvestor);
         }
 
         public void Notify()
@@ -72,28 +70,35 @@ namespace BankKata.Investiment
             }
         }
 
-        public string Company
+        public string Company { get; }
+    }
+
+    public class Company : StockMarket
+    {
+        public Company(string company, int price) : base(company, price)
         {
-            get { return _company; }
         }
     }
 
-    public interface IInvestor
+    public interface IPotencialInvestor
     {
-        void Update(Stock stock);
+        void Update(StockMarket stockMarket);
     }
 
-    public class Investor : IInvestor
+    public class PotencialInvestor : IPotencialInvestor
     {
         private string _name;
 
-        public Investor(string name)
+        public PotencialInvestor(string name)
         {
             _name = name;
         }
-        public void Update(Stock stock)
+
+        public void Update(StockMarket stockMarket)
         {
             throw new NotImplementedException();
         }
+
+        public StockMarket StockMarket { get; set; }
     }
 }

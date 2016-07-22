@@ -13,27 +13,24 @@ namespace BankKata.Models
 
         public void Send(Account account) 
         {
-            _notification = new Notification();
-            _notification.Set(account);
-            SetNotification(account);
+            _notification = new Notification(account, FinNotification(account));
             _notification.SendMessage();
         }
 
-        private void SetNotification(Account account)
+        //todo this cn become a static factory
+        private NotificationStrategy FinNotification(Account account)
         {
             if (account.Balance > 70 && account.Balance <= 80)
             {
-                _notification.SetNotification(new EmailNotification());
-                return;
+                return new EmailNotification();
             }
 
             if (account.Balance > 60 && account.Balance <= 70)
             {
-                _notification.SetNotification(new SmsNotification());
-                return;
+                return new SmsNotification();
             }
 
-            _notification.SetNotification(new LetterNotification());
+            return new LetterNotification();
         }
     }
 }

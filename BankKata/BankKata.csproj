@@ -178,7 +178,6 @@
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Investiment\MarketShares.cs" />
-    <Compile Include="Models\NotificationBuilder.cs" />
     <Compile Include="Models\SendMessage.cs" />
     <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IStatementReader.cs" />
