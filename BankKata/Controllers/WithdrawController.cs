@@ -6,7 +6,7 @@ namespace BankKata.Controllers
     public class WithdrawController : Controller
     {
         private readonly IAccountTransactions _accountTransactions;
-        private ISendMessage _sendMessage;
+        private readonly ISendMessage _sendMessage;
 
         public WithdrawController(IAccountTransactions accountTransactions, ISendMessage sendMessage)
         {
