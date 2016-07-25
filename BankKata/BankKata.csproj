@@ -177,6 +177,7 @@
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvestimentsController.cs" />
     <Compile Include="Investiment\MarketShares.cs" />
     <Compile Include="Models\Investiment.cs" />
     <Compile Include="Models\SendMessage.cs" />
@@ -265,6 +266,7 @@
     <Content Include="Views\Deposits\Create.cshtml" />
     <Content Include="Views\AccountBalance\Index.cshtml" />
     <Content Include="Views\Withdraw\Create.cshtml" />
+    <Content Include="Views\Investiments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
