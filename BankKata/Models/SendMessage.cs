@@ -10,27 +10,17 @@ namespace BankKata.Models
     public class SendMessage : ISendMessage
     {
         private Notification _notification;
+        private readonly NotificationStrategyFactory _notificationStrategyFactory;
+
+        public SendMessage(NotificationStrategyFactory notificationStrategyFactory)
+        {
+            _notificationStrategyFactory = notificationStrategyFactory;
+        }
 
         public void Send(Account account) 
         {
-            _notification = new Notification(account, FinNotification(account));
+            _notification = new Notification(account, _notificationStrategyFactory.FinNotification(account));
             _notification.SendMessage();
-        }
-
-        //todo: this shoulb be a static factory
-        private NotificationStrategy FinNotification(Account account)
-        {
-            if (account.Balance > 70 && account.Balance <= 80)
-            {
-                return new EmailNotification();
-            }
-
-            if (account.Balance > 60 && account.Balance <= 70)
-            {
-                return new SmsNotification();
-            }
-
-            return new LetterNotification();
         }
     }
 }
