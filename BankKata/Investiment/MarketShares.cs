@@ -1,104 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace BankKata.Investiment
 {
-    public class MarketShares
+    public interface IMarketShares
     {
-        private void SharesPrice()
-        {
-           var random = new Random();
-
-            var price = 1;
-            while (price >= 1 && price < 5)
-            {
-                price = random.Next(2, 10);
-            }
-
-            var shares = new Share { Company = "Corp Ltd", Price = price};
-
-            var json = new JavaScriptSerializer().Serialize(shares);
-        }
+        IEnumerable<ShareDetails> GetShareDetailses();
     }
 
-    public class Share
+    public class MarketShares : IMarketShares
     {
-        public string Company { get; set; }
-        public int Price { get; set; }
-    }
-
-    public abstract class StockMarket
-    {
-        private int _price;
-        private readonly List<IPotencialInvestor> _investors = new List<IPotencialInvestor>();
-
-        protected StockMarket(string company, int price)
+        public IEnumerable<ShareDetails> GetShareDetailses()
         {
-            Company = company;
-            _price = price;
-        }
-
-        public void Attach(IPotencialInvestor potencialInvestor)
-        {
-            _investors.Add(potencialInvestor);
-        }
-
-        public void Dettach(IPotencialInvestor potencialInvestor)
-        {
-            _investors.Remove(potencialInvestor);
-        }
-
-        public void Notify()
-        {
-            foreach (var investor in _investors)
+            using (var client = new HttpClient())
             {
-                investor.Update(this);
-            }
-        }
+                client.BaseAddress = new Uri("http://localhost:55625/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-        public int Price
-        {
-            get { return _price; }
-            set
-            {
-                if (_price != value)
+                var response = client.GetAsync("api/ShareDetails").Result;
+
+                if (response.IsSuccessStatusCode)
                 {
-                    _price = value;
-                    Notify();
+                    
                 }
+
+                return null;
             }
         }
 
-        public string Company { get; }
-    }
-
-    public class Company : StockMarket
-    {
-        public Company(string company, int price) : base(company, price)
+        private async void TranslateToShareDetails(HttpResponseMessage response)
         {
-        }
-    }
-
-    public interface IPotencialInvestor
-    {
-        void Update(StockMarket stockMarket);
-    }
-
-    public class PotencialInvestor : IPotencialInvestor
-    {
-        private string _name;
-
-        public PotencialInvestor(string name)
-        {
-            _name = name;
+            var data = await response.Content.ReadAsStringAsync();
+            JsonConvert.DeserializeObject<ShareDetails>(data);
         }
 
-        public void Update(StockMarket stockMarket)
+        public static void Response(HttpResponseMessage response)
         {
-            throw new NotImplementedException();
+            
         }
-
-        public StockMarket StockMarket { get; set; }
     }
 }

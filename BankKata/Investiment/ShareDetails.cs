@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BankKata.Models
+namespace BankKata.Investiment
 {
-    public class Investiment
+    public class ShareDetails
     {
         public string CompanyName { get; set; }
 

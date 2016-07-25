@@ -2,6 +2,7 @@
 using System.IO.Abstractions;
 using System.Web.Mvc;
 using System.Web.Routing;
+using BankKata.Investiment;
 using BankKata.Models;
 
 namespace BankKata.Controllers
@@ -10,7 +11,7 @@ namespace BankKata.Controllers
     {
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            if (controllerType.FullName == typeof(AccountBalanceController).FullName)
+           if (controllerType.FullName == typeof(AccountBalanceController).FullName)
             {
                 return Activator.CreateInstance(controllerType, new StatementReader(new AccountTransactions(new FileSystem()))) as Controller;
             }
@@ -18,6 +19,11 @@ namespace BankKata.Controllers
             if (controllerType.FullName == typeof (WithdrawController).FullName)
             {
                 return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem()), new SendMessage()) as Controller;
+            }
+
+            if (controllerType.FullName == typeof(InvestimentController).FullName)
+            {
+                return Activator.CreateInstance(controllerType, new ShareDetails()) as Controller;
             }
 
             return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem())) as Controller;

@@ -179,7 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestimentsController.cs" />
     <Compile Include="Investiment\MarketShares.cs" />
-    <Compile Include="Models\Investiment.cs" />
+    <Compile Include="Investiment\ShareDetails.cs" />
     <Compile Include="Models\SendMessage.cs" />
     <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IStatementReader.cs" />
