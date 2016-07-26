@@ -9,14 +9,14 @@ namespace BankKata.Investiment
     {
         public static IEnumerable<ShareDetails> TranslateToShareDetails(HttpResponseMessage response)
         {
-            var sahreDetails = new JavaScriptSerializer().Deserialize<List<ShareDetails>>(response.Content.ReadAsStringAsync().Result);
+            var shareDetails = new JavaScriptSerializer().Deserialize<List<ShareDetails>>(response.Content.ReadAsStringAsync().Result);
 
-            foreach (var shareDetail in sahreDetails)
+            foreach (var shareDetail in shareDetails)
             {
                 shareDetail.TimeRequested = DateTime.Now;
             }
 
-            return sahreDetails;
+            return shareDetails;
         }
     }
 }
