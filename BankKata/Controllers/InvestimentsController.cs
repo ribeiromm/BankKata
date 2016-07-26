@@ -16,8 +16,7 @@ namespace BankKata.Controllers
         // GET: Investiments
         public ActionResult Index()
         {
-            var test = _marketShares.GetShareDetailses();
-            return View(new List<ShareDetails>());
+            return View(_marketShares.GetShareDetailses());
         }
     }
 }

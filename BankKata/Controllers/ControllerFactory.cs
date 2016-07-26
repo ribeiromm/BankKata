@@ -18,12 +18,12 @@ namespace BankKata.Controllers
 
             if (controllerType.FullName == typeof (WithdrawController).FullName)
             {
-                return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem()), new SendMessage()) as Controller;
+                return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem()), new SendMessage(new NotificationStrategyFactory())) as Controller;
             }
 
-            if (controllerType.FullName == typeof(InvestimentController).FullName)
+            if (controllerType.FullName == typeof(InvestimentsController).FullName)
             {
-                return Activator.CreateInstance(controllerType, new ShareDetails()) as Controller;
+                return Activator.CreateInstance(controllerType, new MarketShares()) as Controller;
             }
 
             return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem())) as Controller;

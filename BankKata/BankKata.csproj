@@ -180,6 +180,8 @@
     <Compile Include="Controllers\InvestimentsController.cs" />
     <Compile Include="Investiment\MarketShares.cs" />
     <Compile Include="Investiment\ShareDetails.cs" />
+    <Compile Include="Investiment\Transform.cs" />
+    <Compile Include="Models\NotificationStrategyFactory.cs" />
     <Compile Include="Models\SendMessage.cs" />
     <Compile Include="Models\IAccountTransactions.cs" />
     <Compile Include="Models\IStatementReader.cs" />
