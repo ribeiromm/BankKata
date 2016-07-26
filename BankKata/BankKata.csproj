@@ -178,6 +178,7 @@
     <Compile Include="Controllers\DepositsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestimentsController.cs" />
+    <Compile Include="Investiment\ITransform.cs" />
     <Compile Include="Investiment\MarketShares.cs" />
     <Compile Include="Investiment\ShareDetails.cs" />
     <Compile Include="Investiment\Transform.cs" />

@@ -23,7 +23,7 @@ namespace BankKata.Controllers
 
             if (controllerType.FullName == typeof(InvestimentsController).FullName)
             {
-                return Activator.CreateInstance(controllerType, new MarketShares()) as Controller;
+                return Activator.CreateInstance(controllerType, new MarketShares(new Transform())) as Controller;
             }
 
             return Activator.CreateInstance(controllerType, new AccountTransactions(new FileSystem())) as Controller;
