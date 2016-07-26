@@ -5,9 +5,9 @@ using System.Web.Script.Serialization;
 
 namespace BankKata.Investiment
 {
-    public class Transform
+    public class Transform : ITransform
     {
-        public static IEnumerable<ShareDetails> TranslateToShareDetails(HttpResponseMessage response)
+        public IEnumerable<ShareDetails> TranslateToShareDetails(HttpResponseMessage response)
         {
             var shareDetails = new JavaScriptSerializer().Deserialize<List<ShareDetails>>(response.Content.ReadAsStringAsync().Result);
 
